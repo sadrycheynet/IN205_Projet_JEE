@@ -1,10 +1,10 @@
-package main;
+package test;
 
 import main.java.model.*;
 
-public class ModeleTest{
+public class ModeleTest {
 
-    static void main() {
+    public static void main() {
         Livre livreTest = new Livre();
         System.out.println(livreTest.toString());
     }
