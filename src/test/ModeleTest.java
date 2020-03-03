@@ -12,17 +12,17 @@ public class ModeleTest {
 		//testEmprunt();
     }
 	
-	public void testLivre(){
+	public static void testLivre(){
 		Livre livre = new Livre();
 		System.out.println(livre);
 	}
 	
-	public void testMembre(){
+	public static void testMembre(){
 		Membre membre = new Membre();
 		System.out.println(membre);
 	}
 	
-	/*public void testEmprunt(){
+	/*public static void testEmprunt(){
 		Emprunt emprunt = new Emprunt();
 		System.out.println(emprunt);
 	}*/
