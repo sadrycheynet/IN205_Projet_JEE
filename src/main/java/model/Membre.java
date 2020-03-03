@@ -146,7 +146,20 @@ public class Membre{
 		this.abonnement = newAbonnement;
 	}
 	
-	
+	/*!
+	 *	DESCRIPTEUR
+	 */
+	public String toString(){
+		String description = "Id : "+String.valueOf(this.id)+"\n";
+		description = description+"Nom : "+this.nom+"\n";
+		description = description+"Prenom : "+this.prenom+"\n";
+		description = description+"Adresse : "+this.adresse+"\n";
+		description = description+"Email : "+this.email+"\n";
+		description = description+"Telephone : "+this.telephone+"\n";
+		description = description+"Abonnement : "+this.abonnement.name();
+		
+		return description;
+	}
 	
 	
 	
