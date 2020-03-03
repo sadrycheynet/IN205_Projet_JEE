@@ -1,8 +1,8 @@
-package test;
+package com.excilys.librarymanager.test;
 
-import main.java.model.Livre;
-import main.java.model.Membre;
-//import main.java.model.Emprunt;
+import com.excilys.librarymanager.model.Livre;
+import com.excilys.librarymanager.model.Membre;
+//import com.excilys.librarymanager.model.Emprunt;
 
 public class ModeleTest {
 

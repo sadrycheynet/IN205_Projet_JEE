@@ -1,4 +1,4 @@
-package main.java.model;
+package com.excilys.librarymanager.model;
 
 public class Livre{
     /*!
