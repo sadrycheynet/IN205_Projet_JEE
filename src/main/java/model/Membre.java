@@ -13,7 +13,7 @@ public class Membre{
 	private Abonnement	abonnement;
 	
 	/*!
-	 *	CONSTRUCTEUR
+	 *	CONSTRUCTEURS
 	 */
 	public Membre(){
 		id = 0;
@@ -22,6 +22,15 @@ public class Membre{
 		adresse = "ENSTA";
 		telephone = "118218";
 		abonnement = Abonnement.VIP;
+	}
+	
+	public Membre(int newId, String newNom, String newPrenom, String newEmail, String newTelephone, Abonnement newAbonnement){
+		id = newId;
+		nom = newNom;
+		prenom = newPrenom;
+		email = newEmail;
+		telephone = newTelephone;
+		abonnement = newAbonnement;
 	}
 	
 	/*!
@@ -76,6 +85,70 @@ public class Membre{
 	public Abonnement getAbonnement(){
 		return abonnement;
 	}
+	
+	/*!
+	 *	MODIFIEURS
+	 */
+	
+	/*!
+	 *	Modifie l'id du membre.
+	 *	@param newId	Nouvel identifiant du membre.
+	 */
+	public void setId(int newId){
+		this.id = newId;
+	}
+	
+	/*!
+	 *	Modifie le nom du membre.
+	 *	@param newNom	Nouveau nom du membre.
+	 */
+	public void setNom(String newNom){
+		this.nom = newNom;
+	}
+	
+	/*!
+	 *	Modifie le prénom du membre.
+	 *	@param newPrenom	Nouveau prénom du membre.
+	 */
+	public void setPrenom(String newPrenom){
+		this.prenom = newPrenom;
+	}
+	
+	/*!
+	 *	Modifie l'adresse du membre.
+	 *	@param newAdresse	Nouvelle adresse du membre.
+	 */
+	public void setAdresse(String newAdresse){
+		this.adresse = newAdresse;
+	}
+	
+	/*!
+	 *	Modifie l'email du membre.
+	 *	@param newEmail	Nouvel email du membre.
+	 */
+	public void setEmail(String newEmail){
+		this.email = newEmail;
+	}
+	
+	/*!
+	 *	Modifie le numéro de téléphone du membre.
+	 *	@param newTelephone	Nouveau numéro de téléphone du membre.
+	 */
+	public void setTelephone(String newTelephone){
+		this.telephone = newTelephone;
+	}
+	
+	/*!
+	 *	Modifie le type d'abonnement du membre.
+	 *	@param newAbonnement	Nouveau type d'abonnement du membre.
+	 */
+	public void setAbonnement(Abonnement newAbonnement){
+		this.abonnement = newAbonnement;
+	}
+	
+	
+	
+	
 	
 	
 	
