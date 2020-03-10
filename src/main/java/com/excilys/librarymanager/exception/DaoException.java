@@ -1,4 +1,4 @@
-package com.excilys.librarymanager.exception
+package com.excilys.librarymanager.exception;
 
 public class DaoException extends Exception{
 	/*!
