@@ -4,6 +4,9 @@ import com.excilys.librarymanager.exception.DaoException;
 import com.excilys.librarymanager.model.Membre;
 import com.excilys.librarymanager.model.Abonnement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -59,13 +62,11 @@ public interface MembreDaoImpl implements MembreDao{
 			//On clot le statement
 			readPreparedStatement.close();
 		}
-		catch (SQLException e) {
-			String message = "Dao/SQL Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+		catch (SQLException e) {;
+			throw DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			String message = "Dao Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+			throw DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -74,9 +75,8 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("Can't close connection");
+				throw DaoException("La connection n'a pas pu être refermée...");
 			}
-			
 		}
 		
 		//On retourne le membre récupéré si tout s'est bien déroulé		
@@ -107,13 +107,11 @@ public interface MembreDaoImpl implements MembreDao{
 			//On clot le statement
 			readPreparedStatement.close();
 		}
-		catch (SQLException e) {
-			String message = "Dao/SQL Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+		catch (SQLException e) {;
+			throw DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			String message = "Dao Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+			throw DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -122,9 +120,8 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("Can't close connection");
+				throw DaoException("La connection n'a pas pu être refermée...");
 			}
-			
 		}
 		return(allMembers);			
 	}
@@ -168,13 +165,11 @@ public interface MembreDaoImpl implements MembreDao{
 			//On commit à l'ancienne
 			connection.commit();
 		}
-		catch (SQLException e) {
-			String message = "Dao/SQL Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+		catch (SQLException e) {;
+			throw DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			String message = "Dao Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+			throw DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -183,9 +178,8 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("Can't close connection");
+				throw DaoException("La connection n'a pas pu être refermée...");
 			}
-			
 		}
 		
 		return id;
@@ -221,13 +215,11 @@ public interface MembreDaoImpl implements MembreDao{
 			//On commit à l'ancienne
 			connection.commit();
 		}
-		catch (SQLException e) {
-			String message = "Dao/SQL Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+		catch (SQLException e) {;
+			throw DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			String message = "Dao Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+			throw DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -236,9 +228,8 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("Can't close connection");
+				throw DaoException("La connection n'a pas pu être refermée...");
 			}
-			
 		}
 	}
 	
@@ -265,13 +256,11 @@ public interface MembreDaoImpl implements MembreDao{
 			//On commit à l'ancienne
 			connection.commit();
 		}
-		catch (SQLException e) {
-			String message = "Dao/SQL Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+		catch (SQLException e) {;
+			throw DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			String message = "Dao Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+			throw DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -280,9 +269,8 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("Can't close connection");
+				throw DaoException("La connection n'a pas pu être refermée...");
 			}
-			
 		}
 	}
 	
@@ -315,13 +303,11 @@ public interface MembreDaoImpl implements MembreDao{
 			//On commit à l'ancienne
 			connection.commit();
 		}
-		catch (SQLException e) {
-			String message = "Dao/SQL Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+		catch (SQLException e) {;
+			throw DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			String message = "Dao Exception : "+e.getLocalizedMessage();
-			throw DaoException(message);
+			throw DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -330,9 +316,8 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("Can't close connection");
+				throw DaoException("La connection n'a pas pu être refermée...");
 			}
-			
 		}
 		
 		return count;
