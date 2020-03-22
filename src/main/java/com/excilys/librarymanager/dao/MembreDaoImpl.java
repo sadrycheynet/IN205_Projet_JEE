@@ -104,7 +104,7 @@ public class MembreDaoImpl implements MembreDao{
 			//On récupère les membres dans la table
 			ResultSet rs = readPreparedStatement.executeQuery();
 			while(rs.next()) {
-				allMembers.add(new Membre(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("adresse"),rs.getString("email"),rs.getString("telephone"),Abonnement.valueOf(rs.getString("abonnement")));
+				allMembers.add(new Membre(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("adresse"),rs.getString("email"),rs.getString("telephone"), Abonnement.valueOf(rs.getString("abonnement"))));
 			}
 			
 			//On clot le statement
