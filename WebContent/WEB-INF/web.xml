@@ -5,4 +5,56 @@
     <error-code>500</error-code>
     <location>/WEB-INF/View/error_500.jsp</location>
   </error-page>
+  
+  <!-- DASHBOARD -->
+  <servlet>
+    <servlet-name>DashboardServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.DashboardServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DashboardServlet</servlet-name>
+    <url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
+  
+  <!-- MEMBRES -->
+  <servlet>
+    <servlet-name>MembreListServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.MembreListServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreListServlet</servlet-name>
+    <url-pattern>/membre_list</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MembreDetails</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.MembreDetails</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreDetails</servlet-name>
+    <url-pattern>/membre_details</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MembreAddServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.MembreAddServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreAddServlet</servlet-name>
+    <url-pattern>/membre_add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MembreDeleteServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.MembreDeleteServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreDeleteServlet</servlet-name>
+    <url-pattern>/membre_delete</url-pattern>
+  </servlet-mapping>
+  
+  <!-- LIVRES -->
+  
+  <!-- EMPRUNTS -->
+  
 </web-app>
