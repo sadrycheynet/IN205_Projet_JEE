@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import com.excilys.librarymanager.persistence.ConnectionManager;
 
-public interface MembreDaoImpl implements MembreDao{
+public class MembreDaoImpl implements MembreDao{
 	
 	/*!
 	 * ATTRIBUTS
@@ -42,7 +42,9 @@ public interface MembreDaoImpl implements MembreDao{
 	 *	Permet de récupérer un membre par son id passé en paramètre.
 	 *	@param id	Id du membre que l'on souhaite récupérer.
 	 */
-	public Membre getById(int id) throws DaoException{//On établit la connection à la base
+	@Override
+	public Membre getById(int id) throws DaoException{
+		//On établit la connection à la base
 		Connection connection = null;
 		Membre selectedMembre = new Membre();
 		try {
@@ -75,7 +77,7 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...");
+				throw DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 		
@@ -86,6 +88,7 @@ public interface MembreDaoImpl implements MembreDao{
 	/*!
 	 *	Permet de récupérer la liste de tous les membres inscrits.
 	 */
+	@Override
 	public List<Membre> getList() throws DaoException{
 		//On établit la connection à la base
 		Connection connection = null;
@@ -120,7 +123,7 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...");
+				throw DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 		return(allMembers);			
@@ -136,6 +139,7 @@ public interface MembreDaoImpl implements MembreDao{
 	 *
 	 *	@return	Identifiant du membre créé
 	 */
+	@Override
 	public int create(String nom, String prenom, String adresse, String email, String telephone) throws DaoException{
 		Connection connection = null;
 		try {
@@ -178,7 +182,7 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...");
+				throw DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 		
@@ -189,6 +193,7 @@ public interface MembreDaoImpl implements MembreDao{
 	 *	Met à jour les informations du membre passé en paramètre.
 	 *	@param membre	Membre à modifier.
 	 */
+	@Override
 	public void update(Membre membre) throws DaoException{
 		Connection connection = null;
 		try {
@@ -228,7 +233,7 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...");
+				throw DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 	}
@@ -237,6 +242,7 @@ public interface MembreDaoImpl implements MembreDao{
 	 *	Supprime le membre dont l'id est passé en paramètre.
 	 *	@param id	Id du membre à supprimer.
 	 */
+	@Override
 	public void delete(int id) throws DaoException{
 		Connection connection = null;
 		try {
@@ -269,7 +275,7 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...");
+				throw DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 	}
@@ -278,6 +284,7 @@ public interface MembreDaoImpl implements MembreDao{
 	 *	Renvoie le nombre de membres de notre librairie.
 	 *	@return	Nombre de membres de notre librairie.
 	 */
+	@Override
 	public int count() throws DaoException{
 		Connection connection = null;
 		int counter = 0;
@@ -316,7 +323,7 @@ public interface MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...");
+				throw DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 		

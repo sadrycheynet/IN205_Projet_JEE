@@ -1,7 +1,7 @@
 import java.util.List;
 
 import com.excilys.librarymanager.exception.ServiceException;
-import com.excilys.librarymanager.modele.Membre;
+import com.excilys.librarymanager.model.Membre;
 
 public interface MembreService {
 
