@@ -17,11 +17,11 @@ public class Membre{
 	 */
 	public Membre(){
 		id = 0;
-		nom = "Jiang";
-		prenom = "Luc";
-		adresse = "ENSTA";
-		telephone = "118218";
-		abonnement = Abonnement.VIP;
+		nom = "";
+		prenom = "";
+		adresse = "";
+		telephone = "";
+		abonnement = Abonnement.BASIC;
 	}
 	
 	public Membre(int newId, String newNom, String newPrenom, String newEmail, String newTelephone, Abonnement newAbonnement){
