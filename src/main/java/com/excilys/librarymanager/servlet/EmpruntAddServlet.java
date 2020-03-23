@@ -18,12 +18,31 @@ import com.excilys.librarymanager.model.Emprunt;
 
 import com.excilys.librarymanager.service.EmpruntService;
 import com.excilys.librarymanager.service.EmpruntServiceImpl;
-import com.excilys.librarymanager.servlet.EmpruntListServlet;
+import com.excilys.librarymanager.service.LivreService;
+import com.excilys.librarymanager.servlet.LivreServiceImpl;
+import com.excilys.librarymanager.service.MembreService;
+import com.excilys.librarymanager.servlet.MembreServiceImpl;
 
 public class EmpruntAddServlet extends HttpServlet {	
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        MembreServiceImpl membreService = MembreServiceImpl.getInstance();
+        LivreServiceImpl livreService = LivreServiceImpl.getInstance();
+		
+		List<Membre> membres = new ArrayList<Membre>();
+		List<Livre> livres = new ArrayList<Livre>();
+		try{
+            livres = livreService.getListDispo();
+            membres = membreService.getList();
+		} catch(ServiceException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("livres", livres);
+		request.setAttribute("membres", membres);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/emprunt_add.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -31,18 +50,17 @@ public class EmpruntAddServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
-		String inputLivre = request.getParameter("idLivre");
-		String inputMembre = request.getParameter("idMembre");
+		String inputIdLivre = request.getParameter("idDuLivre");
+		String inputIdMembre = request.getParameter("idDuMembre");
         
-        int idLivre = Integer.parseInt(inputLivre);
-        int idMembre = Integer.parseInt(inputMembre);
+        int idLivre = Integer.parseInt(inputIdLivre);
+        int idMembre = Integer.parseInt(inputIdMembre);
         Emprunt newEmprunt;
 		try {
 			newEmprunt = empruntService.create(idMembre, idLivre, LocalDate.now());
 		} catch (ServiceException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			newEmprunt = new Membre();
 		}
 		
 		List<Emprunt> emprunts = new ArrayList<Emprunt>();

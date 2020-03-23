@@ -21,16 +21,19 @@
       </div>
       <div class="row">
       <div class="container">
-        <h5>Sélectionnez le livre à retourner</h5>
+        <h5>Sï¿½lectionnez le livre ï¿½ retourner</h5>
         <div class="row">
 	      <form action="/LibraryManager/emprunt_return" method="post" class="col s12">
 	        <div class="row">
 	          <div class="input-field col s12">
 	            <select id="id" name="id" class="browser-default">
-	              <option value="" disabled selected>---</option>
-                  <!-- TODO : parcourir la liste des emprunts non rendus et afficher autant d'options que nécessaire, sur la base de l'exemple ci-dessous -->
-                  <!-- TODO : si l'attribut id existe, l'option correspondante devra être sélectionnée par défaut (ajouter l'attribut selected dans la balise <option>) -->
-                  <option value="idDeLEmprunt">"Titre du livre", emprunté par Prénom et nom du membre emprunteur</option>
+                <option value="" disabled selected>---</option>
+                  <!-- TODO : parcourir la liste des emprunts non rendus et afficher autant d'options que nï¿½cessaire, sur la base de l'exemple ci-dessous -->
+                  <!-- TODO : si l'attribut id existe, l'option correspondante devra ï¿½tre sï¿½lectionnï¿½e par dï¿½faut (ajouter l'attribut selected dans la balise <option>) -->
+                    <c:forEach items="${empruntslistCurrent}" var="emprunt">
+                      <option value="${emprunt.getId()}">${emprunt.getLivre().getTitre()}, emprunte par ${emprunt.getMembre().getPrenom()} ${emprunt.getMembre().getNom()}</option>
+                    </c:forEach>
+                  
 	            </select>
 	          </div>
 	        </div>

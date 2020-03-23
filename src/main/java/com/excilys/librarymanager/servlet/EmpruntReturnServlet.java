@@ -24,6 +24,17 @@ public class EmpruntReturnServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
+		
+		List<Emprunt> emprunts = new ArrayList<Emprunt>();
+		try{
+			emprunts = empruntService.getListCurrent();
+		} catch(ServiceException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("empruntslistCurrent", emprunts);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/emprunt_return.jsp");
 		dispatcher.forward(request, response);
 	}
