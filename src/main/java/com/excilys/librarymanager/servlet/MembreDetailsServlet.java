@@ -40,7 +40,7 @@ public class MembreDetailsServlet extends HttpServlet {
 		try{
 			id = String.valueOf(inputId);
 			membre = membreService.getById(id);
-			listEmprunts = empruntService.getListCurrentByMember(id);
+			listEmprunts = empruntService.getListCurrentByMembre(id);
 			
 		} catch(ServiceException e) {
 			System.out.println(e.getMessage());
@@ -99,7 +99,7 @@ public class MembreDetailsServlet extends HttpServlet {
 			membre.setAbonnement(abonnement);
 			
 			membreService.update(membre);
-			listEmprunts = empruntService.getListCurrentByMember(id);
+			listEmprunts = empruntService.getListCurrentByMembre(id);
 			
 		} catch (ServiceException e) {
 			System.out.println(e.getMessage());
