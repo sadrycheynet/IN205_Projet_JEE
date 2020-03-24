@@ -6,7 +6,7 @@ import com.excilys.librarymanager.model.Membre;
 
 public class ModeleTest {
 
-    public static void main() {
+    public static void main(String[] args) {
         testLivre();
 		testMembre();
 		//testEmprunt();
