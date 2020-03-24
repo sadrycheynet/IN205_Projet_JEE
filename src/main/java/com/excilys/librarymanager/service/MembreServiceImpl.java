@@ -1,7 +1,5 @@
 package com.excilys.librarymanager.service;
 
-import java.util.List;
-
 import com.excilys.librarymanager.exception.DaoException;
 import com.excilys.librarymanager.exception.ServiceException;
 import com.excilys.librarymanager.model.Membre;
