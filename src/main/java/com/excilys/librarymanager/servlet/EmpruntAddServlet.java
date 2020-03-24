@@ -2,6 +2,9 @@ package com.excilys.librarymanager.servlet;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
@@ -19,16 +22,16 @@ import com.excilys.librarymanager.model.Emprunt;
 import com.excilys.librarymanager.service.EmpruntService;
 import com.excilys.librarymanager.service.EmpruntServiceImpl;
 import com.excilys.librarymanager.service.LivreService;
-import com.excilys.librarymanager.servlet.LivreServiceImpl;
+import com.excilys.librarymanager.service.LivreServiceImpl;
 import com.excilys.librarymanager.service.MembreService;
-import com.excilys.librarymanager.servlet.MembreServiceImpl;
+import com.excilys.librarymanager.service.MembreServiceImpl;
 
 public class EmpruntAddServlet extends HttpServlet {	
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        MembreServiceImpl membreService = MembreServiceImpl.getInstance();
-        LivreServiceImpl livreService = LivreServiceImpl.getInstance();
+        MembreService membreService = MembreServiceImpl.getInstance();
+        LivreService livreService = LivreServiceImpl.getInstance();
 		
 		List<Membre> membres = new ArrayList<Membre>();
 		List<Livre> livres = new ArrayList<Livre>();
@@ -38,6 +41,8 @@ public class EmpruntAddServlet extends HttpServlet {
 		} catch(ServiceException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		request.setAttribute("livres", livres);
@@ -49,18 +54,21 @@ public class EmpruntAddServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
+        EmpruntService empruntService = EmpruntServiceImpl.getInstance();
 		String inputIdLivre = request.getParameter("idDuLivre");
 		String inputIdMembre = request.getParameter("idDuMembre");
-        
-        int idLivre = Integer.parseInt(inputIdLivre);
-        int idMembre = Integer.parseInt(inputIdMembre);
-        Emprunt newEmprunt;
+		
 		try {
-			newEmprunt = empruntService.create(idMembre, idLivre, LocalDate.now());
+			int idLivre = Integer.parseInt(inputIdLivre);
+			int idMembre = Integer.parseInt(inputIdMembre);
+			empruntService.create(idMembre, idLivre, LocalDate.now());
 		} catch (ServiceException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+		} catch(NumberFormatException ebis){
+			throw new ServletException("Erreur lors du parsing : idMembre="+inputIdMembre+" idLivre="+inputIdLivre,ebis);
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		List<Emprunt> emprunts = new ArrayList<Emprunt>();
@@ -69,6 +77,8 @@ public class EmpruntAddServlet extends HttpServlet {
 		} catch(ServiceException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		request.setAttribute("emprunts", emprunts);

@@ -28,7 +28,7 @@
 	          <div class="input-field col s6">
 	            <select id="idLivre" name="idLivre" class="browser-default">
 	              <option value="" disabled selected>-- Livres --</option>
-	              <!-- TODO : parcourir la liste des livres disponibles et afficher autant d'options que n�cessaire, sur la base de l'exemple ci-dessous -->
+	              <!-- TODO : parcourir la liste des livres disponibles et afficher autant d'options que nécessaire, sur la base de l'exemple ci-dessous -->
                 <c:forEach var="livre" items="${livres}">
                   <option value="idDuLivre">"${livre.getTitre()}", ${livre.getAuteur()}</option>
                 </c:forEach>

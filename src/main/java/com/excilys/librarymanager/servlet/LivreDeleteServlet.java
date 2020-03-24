@@ -30,7 +30,7 @@ public class LivreDeleteServlet extends HttpServlet {
 		Livre livre;
 		
 		try{
-			id = String.valueOf(inputId);
+			id = Integer.parseInt(inputId);
 			livre = livreService.getById(id);
 			
 		} catch(ServiceException e) {
@@ -40,7 +40,9 @@ public class LivreDeleteServlet extends HttpServlet {
 			
 		} catch(NumberFormatException ebis){
 			livre = new Livre();		//Je ne suis pas sûr que cela soit utile, mais dans le doute, ça coûte pas tant que ça d'initialiser "livre"
-			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis.getMessage());
+			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis);
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		request.setAttribute("livre", livre);
@@ -58,21 +60,18 @@ public class LivreDeleteServlet extends HttpServlet {
 		String inputId = request.getParameter("id");
 		int id = -1;
 		
-		Livre livre;
-		
 		try{
-			id = String.valueOf(inputId);
-			livre = livreService.getById(id);
-			livreService.delete(livre);
+			id = Integer.parseInt(inputId);
+			livreService.delete(id);
 			
 		} catch(ServiceException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			livre = new Livre();
 			
 		} catch(NumberFormatException ebis){
-			livre = new Livre();		//Je ne suis pas sûr que cela soit utile, mais dans le doute, ça coûte pas tant que ça d'initialiser "livre"
-			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis.getMessage());
+			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis);
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/livre_list.jsp");

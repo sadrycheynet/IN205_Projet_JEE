@@ -45,7 +45,7 @@ public class MembreAddServlet extends HttpServlet {
 			//Création du membre (les vérifications et modifications sont gérées par la couche "Service", et non par le servlet)
 			//le choix de l'abonnement est géré par le dao
 			id = membreService.create(inputNom, inputPrenom, inputAdresse, inputEmail, inputTelephone);
-			inputId = id.toString();
+			inputId = String.valueOf(id);
 			newMembre = membreService.getById(id);
 		} catch (ServiceException e) {
 			System.out.println(e.getMessage());

@@ -30,7 +30,7 @@ public class MembreDeleteServlet extends HttpServlet {
 		Membre membre;
 		
 		try{
-			id = String.valueOf(inputId);
+			id = Integer.parseInt(inputId);
 			membre = membreService.getById(id);
 			
 		} catch(ServiceException e) {
@@ -40,7 +40,9 @@ public class MembreDeleteServlet extends HttpServlet {
 			
 		} catch(NumberFormatException ebis){
 			membre = new Membre();		//Je ne suis pas sûr que cela soit utile, mais dans le doute, ça coûte pas tant que ça d'initialiser "membre"
-			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis.getMessage());
+			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis);
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		request.setAttribute("membre", membre);
@@ -58,21 +60,18 @@ public class MembreDeleteServlet extends HttpServlet {
 		String inputId = request.getParameter("id");
 		int id = -1;
 		
-		Membre membre;
-		
 		try{
-			id = String.valueOf(inputId);
-			membre = membreService.getById(id);
-			membreService.delete(membre);
+			id = Integer.parseInt(inputId);
+			membreService.delete(id);
 			
 		} catch(ServiceException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			membre = new Membre();
 			
 		} catch(NumberFormatException ebis){
-			membre = new Membre();		//Je ne suis pas sûr que cela soit utile, mais dans le doute, ça coûte pas tant que ça d'initialiser "membre"
-			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis.getMessage());
+			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis);
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/membre_list.jsp");

@@ -2,8 +2,11 @@ package com.excilys.librarymanager.service;
 
 import com.excilys.librarymanager.exception.ServiceException;
 import com.excilys.librarymanager.exception.DaoException;
+
 import com.excilys.librarymanager.model.Livre;
+
 import com.excilys.librarymanager.service.EmpruntServiceImpl;
+
 import com.excilys.librarymanager.dao.LivreDao;
 import com.excilys.librarymanager.dao.LivreDaoImpl;
 

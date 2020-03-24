@@ -1,7 +1,9 @@
+package com.excilys.librarymanager.service;
+
 import java.util.List;
 
 import com.excilys.librarymanager.exception.ServiceException;
-import com.excilys.librarymanager.modele.Livre;
+import com.excilys.librarymanager.model.Livre;
 
 public interface LivreService {
 

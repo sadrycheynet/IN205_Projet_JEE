@@ -2,6 +2,7 @@ package com.excilys.librarymanager.service;
 
 import java.util.List;
 
+import com.excilys.librarymanager.exception.DaoException;
 import com.excilys.librarymanager.exception.ServiceException;
 import com.excilys.librarymanager.model.Membre;
 import com.excilys.librarymanager.model.Abonnement;
@@ -112,7 +113,7 @@ public class MembreServiceImpl implements MembreService{
 		if(nom.isEmpty()||prenom.isEmpty()){
 			/*Notons qu'on n'a pas précisé dans les specs si le prénom et le nom du membre devait contenir uniquement des caractères alphanumériques,
 			traits-d'unions ou espaces*/
-			throw ServiceException("Les membres de peuvent pas avoir de prénom ou de nom vide !");
+			throw new ServiceException("Les membres de peuvent pas avoir de prénom ou de nom vide !");
 		}
 		else{
 			MembreDao membreDao = MembreDaoImpl.getInstance();
@@ -135,11 +136,11 @@ public class MembreServiceImpl implements MembreService{
 	@Override
 	public void update(Membre membre) throws ServiceException{
 		MembreDao membreDao = MembreDaoImpl.getInstance();
-		nom = membre.getNom();
+		String nom = membre.getNom();
 		if(nom.isEmpty()||(membre.getPrenom()).isEmpty()){
 			/*Notons qu'on n'a pas précisé dans les specs si le prénom et le nom du membre devait contenir uniquement des caractères alphanumériques,
 			traits-d'unions ou espaces*/
-			throw ServiceException("Les membres de peuvent pas avoir de prénom ou de nom vide !");
+			throw new ServiceException("Les membres de peuvent pas avoir de prénom ou de nom vide !");
 		}
 		else{
 			try{

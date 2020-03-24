@@ -20,14 +20,16 @@ public class Membre{
 		nom = "";
 		prenom = "";
 		adresse = "";
+		email="";
 		telephone = "";
 		abonnement = Abonnement.BASIC;
 	}
 	
-	public Membre(int newId, String newNom, String newPrenom, String newEmail, String newTelephone, Abonnement newAbonnement){
+	public Membre(int newId, String newNom, String newPrenom, String newAdresse, String newEmail, String newTelephone, Abonnement newAbonnement){
 		id = newId;
 		nom = newNom;
 		prenom = newPrenom;
+		adresse = newAdresse;
 		email = newEmail;
 		telephone = newTelephone;
 		abonnement = newAbonnement;
@@ -160,10 +162,4 @@ public class Membre{
 		
 		return description;
 	}
-	
-	
-	
-	
-	
-	
 }

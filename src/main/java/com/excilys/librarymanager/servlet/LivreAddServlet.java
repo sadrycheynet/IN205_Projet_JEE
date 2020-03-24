@@ -32,8 +32,8 @@ public class LivreAddServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LivreService livreService = LivreServiceImpl.getInstance();
-		String inputAuteur = request.getParameter("titre");
-		String inputPrenom = request.getParameter("auteur");
+		String inputTitre = request.getParameter("titre");
+		String inputAuteur = request.getParameter("auteur");
 		String inputIsbn = request.getParameter("isbn");
 		
 		String inputId ="-1";
@@ -43,7 +43,7 @@ public class LivreAddServlet extends HttpServlet {
 			//Création du livre (les vérifications et modifications sont gérées par la couche "Service", et non par le servlet)
 			//le choix de l'abonnement est géré par le dao
 			id = livreService.create(inputTitre, inputAuteur, inputIsbn);
-			inputId = id.toString();
+			inputId = String.valueOf(id);
 			newLivre = livreService.getById(id);
 		} catch (ServiceException e) {
 			System.out.println(e.getMessage());

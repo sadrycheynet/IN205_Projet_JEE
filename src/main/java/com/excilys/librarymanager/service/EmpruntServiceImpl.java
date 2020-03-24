@@ -2,8 +2,11 @@ package com.excilys.librarymanager.service;
 
 import com.excilys.librarymanager.exception.ServiceException;
 import com.excilys.librarymanager.exception.DaoException;
+
 import com.excilys.librarymanager.model.Abonnement;
+import com.excilys.librarymanager.model.Membre;
 import com.excilys.librarymanager.model.Emprunt;
+
 import com.excilys.librarymanager.dao.EmpruntDao;
 import com.excilys.librarymanager.dao.EmpruntDaoImpl;
 
@@ -56,7 +59,7 @@ public class EmpruntServiceImpl implements EmpruntService {
         List<Emprunt> emprunts = new ArrayList<Emprunt>();
         
 		try{
-			emprunts = empruntDao.getListCurrentByMembre();
+			emprunts = empruntDao.getListCurrentByMembre(idMembre);
 		} catch (DaoException e){
 			System.out.println(e.getMessage());
 		}
@@ -69,7 +72,7 @@ public class EmpruntServiceImpl implements EmpruntService {
         List<Emprunt> emprunts = new ArrayList<Emprunt>();
         
 		try{
-			emprunts = empruntDao.getListCurrentByLivre();
+			emprunts = empruntDao.getListCurrentByLivre(idLivre);
 		} catch (DaoException e){
 			System.out.println(e.getMessage());
 		}
@@ -126,7 +129,7 @@ public class EmpruntServiceImpl implements EmpruntService {
     
 	public boolean isLivreDispo(int idLivre) throws ServiceException {
         EmpruntDaoImpl empruntDao = EmpruntDaoImpl.getInstance();
-        int res = false;
+        boolean res = false;
         
 		try{
             List<Emprunt> listLivre = empruntDao.getListCurrentByLivre(idLivre);

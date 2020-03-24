@@ -34,17 +34,23 @@ public class LivreDetailsServlet extends HttpServlet {
 		Livre livre;
 		List<Emprunt> listEmprunts = new ArrayList<Emprunt>();
 		
+		LivreService livreService = LivreServiceImpl.getInstance();
 		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
 		
 		try{
-			id = String.valueOf(inputId);
+			id = Integer.parseInt(inputId);
+			livre = livreService.getById(id);
 			listEmprunts = empruntService.getListCurrentByLivre(id);
 		} catch(ServiceException e) {
+			livre = new Livre();
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 			
 		} catch(NumberFormatException ebis){
-			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis.getMessage());
+			livre = new Livre();
+			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis);
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		request.setAttribute("livre",livre);
@@ -71,7 +77,7 @@ public class LivreDetailsServlet extends HttpServlet {
 		LivreService livreService = LivreServiceImpl.getInstance();
 		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
 		try {
-			id = String.valueOf(inputId);
+			id = Integer.parseInt(inputId);
 						
 			//Modification du livre
 			livre = livreService.getById(id);
@@ -88,7 +94,9 @@ public class LivreDetailsServlet extends HttpServlet {
 			livre = new Livre();
 		} catch(NumberFormatException ebis){
 			livre = new Livre();		//Je ne suis pas sûr que cela soit utile, mais dans le doute, ça coûte pas tant que ça d'initialiser "livre"
-			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis.getMessage());
+			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis);
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		request.setAttribute("emprunts",listEmprunts);

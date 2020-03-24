@@ -21,7 +21,7 @@
       </div>
       <div class="row">
       <div class="container">
-        <h5>S�lectionnez le livre � retourner</h5>
+        <h5>Sélectionnez le livre à retourner</h5>
         <div class="row">
 	      <form action="/LibraryManager/emprunt_return" method="post" class="col s12">
 	        <div class="row">

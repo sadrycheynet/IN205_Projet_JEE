@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.excilys.librarymanager.exception.ServiceException;
 
+import com.excilys.librarymanager.model.Abonnement;
 import com.excilys.librarymanager.model.Membre;
 import com.excilys.librarymanager.model.Emprunt;
 
@@ -38,7 +39,7 @@ public class MembreDetailsServlet extends HttpServlet {
 		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
 		
 		try{
-			id = String.valueOf(inputId);
+			id = Integer.parseInt(inputId);
 			membre = membreService.getById(id);
 			listEmprunts = empruntService.getListCurrentByMembre(id);
 			
@@ -49,7 +50,7 @@ public class MembreDetailsServlet extends HttpServlet {
 			
 		} catch(NumberFormatException ebis){
 			membre = new Membre();		//Je ne suis pas sûr que cela soit utile, mais dans le doute, ça coûte pas tant que ça d'initialiser "membre"
-			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis.getMessage());
+			throw new ServletException(("Erreur lors du parsing : id="+inputId),ebis);
 		}
 		
 		request.setAttribute("emprunts",listEmprunts);
@@ -81,12 +82,12 @@ public class MembreDetailsServlet extends HttpServlet {
 		MembreService membreService = MembreServiceImpl.getInstance();
 		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
 		try {
-			id = String.valueOf(inputId);
+			id = Integer.parseInt(inputId);
 			//Vérification du type de l'abonnement
 			try{
 				abonnement = Abonnement.valueOf(inputAbonnement);
 			} catch (Exception e){
-				throw new ServletException("Type d'abonnement inexistant",e.getMessage());
+				throw new ServletException("Type d'abonnement inexistant",e);
 			}
 			
 			//Modification du membre
@@ -107,7 +108,7 @@ public class MembreDetailsServlet extends HttpServlet {
 			membre = new Membre();
 		} catch(NumberFormatException ebis){
 			membre = new Membre();		//Je ne suis pas sûr que cela soit utile, mais dans le doute, ça coûte pas tant que ça d'initialiser "membre"
-			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis.getMessage());
+			throw new ServletException("Erreur lors du parsing : id="+inputId,ebis);
 		}
 		
 		request.setAttribute("emprunts",listEmprunts);

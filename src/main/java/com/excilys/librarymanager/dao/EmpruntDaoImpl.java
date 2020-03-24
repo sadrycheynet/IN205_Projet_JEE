@@ -45,7 +45,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
             
 			while(rs.next()) {
                 Livre l = new Livre(rs.getInt("idLivre"), rs.getString("titre"), rs.getString("auteur"), rs.getString("isbn"));
-                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), Abonnement.valueOf(rs.getString("abonnement")));
+                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("adresse"), rs.getString("email"), rs.getString("telephone"), Abonnement.valueOf(rs.getString("abonnement")));
 				Emprunt f = new Emprunt(rs.getInt("id"), l, m, rs.getDate("dateEmprunt").toLocalDate(), rs.getDate("dateRetour").toLocalDate());
 				emprunts.add(f);
 			}
@@ -91,7 +91,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
             
             while(rs.next()) {
                 Livre l = new Livre(rs.getInt("idLivre"), rs.getString("titre"), rs.getString("auteur"), rs.getString("isbn"));
-                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getObject("abonnement", Abonnement.class));
+                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("adresse"), rs.getString("email"), rs.getString("telephone"), rs.getObject("abonnement", Abonnement.class));
 				Emprunt f = new Emprunt(rs.getInt("id"), l, m, rs.getDate("dateEmprunt").toLocalDate(), rs.getDate("dateRetour").toLocalDate());
                 emprunts.add(f);
             }
@@ -139,7 +139,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
             
             while(rs.next()) {
                 Livre l = new Livre(rs.getInt("idLivre"), rs.getString("titre"), rs.getString("auteur"), rs.getString("isbn"));
-                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getObject("abonnement", Abonnement.class));
+                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("adresse"), rs.getString("email"), rs.getString("telephone"), rs.getObject("abonnement", Abonnement.class));
 				Emprunt f = new Emprunt(rs.getInt("id"), l, m, rs.getDate("dateEmprunt").toLocalDate(), rs.getDate("dateRetour").toLocalDate());
                 emprunts.add(f);
             }
@@ -186,7 +186,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
             
             while(rs.next()) {
                 Livre l = new Livre(rs.getInt("idLivre"), rs.getString("titre"), rs.getString("auteur"), rs.getString("isbn"));
-                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getObject("abonnement", Abonnement.class));
+                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("adresse"), rs.getString("email"), rs.getString("telephone"), rs.getObject("abonnement", Abonnement.class));
 				Emprunt f = new Emprunt(rs.getInt("id"), l, m, rs.getDate("dateEmprunt").toLocalDate(), rs.getDate("dateRetour").toLocalDate());
                 emprunts.add(f);
             }
@@ -233,7 +233,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
             
             if(rs.next()) {
                 Livre l = new Livre(rs.getInt("idLivre"), rs.getString("titre"), rs.getString("auteur"), rs.getString("isbn"));
-                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getObject("abonnement", Abonnement.class));
+                Membre m = new Membre(rs.getInt("idMembre"), rs.getString("nom"), rs.getString("prenom"), rs.getString("adresse"), rs.getString("email"), rs.getString("telephone"), rs.getObject("abonnement", Abonnement.class));
                 Emprunt f = new Emprunt(rs.getInt("idEmprunt"), l, m, rs.getDate("dateEmprunt").toLocalDate(), rs.getDate("dateRetour").toLocalDate());
             }  
             //System.out.println("GET: " + emprunt);

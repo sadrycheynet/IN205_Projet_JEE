@@ -1,6 +1,7 @@
 package com.excilys.librarymanager.servlet;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class EmpruntListServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
+		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
 		
 		List<Emprunt> emprunts = new ArrayList<Emprunt>();
 		try{
@@ -32,6 +33,8 @@ public class EmpruntListServlet extends HttpServlet {
 		} catch(ServiceException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+		} catch(Exception e){
+			throw new ServletException("Erreur au niveau du servlet : ",e);
 		}
 		
 		request.setAttribute("emprunts", emprunts);

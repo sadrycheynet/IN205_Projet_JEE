@@ -65,10 +65,13 @@ public class MembreDaoImpl implements MembreDao{
 			readPreparedStatement.close();
 		}
 		catch (SQLException e) {;
-			throw DaoException("Problème lors de l'exécution de la requête",e);
+			throw new DaoException("Problème lors de l'exécution de la requête",e);
+		}
+		catch (NumberFormatException e) {
+			throw new DaoException("Problème de parsing");
 		}
 		catch (Exception e) {
-			throw DaoException("Erreur de connection",e);
+			throw new DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -77,7 +80,7 @@ public class MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...",e);
+				throw new DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 		
@@ -111,10 +114,13 @@ public class MembreDaoImpl implements MembreDao{
 			readPreparedStatement.close();
 		}
 		catch (SQLException e) {;
-			throw DaoException("Problème lors de l'exécution de la requête",e);
+			throw new DaoException("Problème lors de l'exécution de la requête",e);
+		}
+		catch (NumberFormatException e) {
+			throw new DaoException("Problème de parsing");
 		}
 		catch (Exception e) {
-			throw DaoException("Erreur de connection",e);
+			throw new DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -123,7 +129,7 @@ public class MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...",e);
+				throw new DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 		return(allMembers);			
@@ -142,6 +148,7 @@ public class MembreDaoImpl implements MembreDao{
 	@Override
 	public int create(String nom, String prenom, String adresse, String email, String telephone) throws DaoException{
 		Connection connection = null;
+		int id = 0;
 		try {
 			connection = ConnectionManager.getConnection();
 			//On bloque le commit
@@ -159,7 +166,6 @@ public class MembreDaoImpl implements MembreDao{
 			createStatement.executeUpdate();
 			
 			ResultSet rs = createStatement.getGeneratedKeys();
-			int id = 0;
 			if(rs.next()){
 				id = rs.getInt(1);
 			}
@@ -170,10 +176,10 @@ public class MembreDaoImpl implements MembreDao{
 			connection.commit();
 		}
 		catch (SQLException e) {;
-			throw DaoException("Problème lors de l'exécution de la requête",e);
+			throw new DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			throw DaoException("Erreur de connection",e);
+			throw new DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -182,7 +188,7 @@ public class MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...",e);
+				throw new DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 		
@@ -221,10 +227,10 @@ public class MembreDaoImpl implements MembreDao{
 			connection.commit();
 		}
 		catch (SQLException e) {;
-			throw DaoException("Problème lors de l'exécution de la requête",e);
+			throw new DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			throw DaoException("Erreur de connection",e);
+			throw new DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -233,7 +239,7 @@ public class MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...",e);
+				throw new DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 	}
@@ -263,10 +269,10 @@ public class MembreDaoImpl implements MembreDao{
 			connection.commit();
 		}
 		catch (SQLException e) {;
-			throw DaoException("Problème lors de l'exécution de la requête",e);
+			throw new DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			throw DaoException("Erreur de connection",e);
+			throw new DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -275,7 +281,7 @@ public class MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...",e);
+				throw new DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 	}
@@ -302,7 +308,7 @@ public class MembreDaoImpl implements MembreDao{
 			ResultSet rs = updateStatement.executeQuery();
 			
 			if(rs.next()){
-				count = rs.getInt(1);
+				counter = rs.getInt(1);
 			}
 			
 			updateStatement.close();
@@ -311,10 +317,10 @@ public class MembreDaoImpl implements MembreDao{
 			connection.commit();
 		}
 		catch (SQLException e) {;
-			throw DaoException("Problème lors de l'exécution de la requête",e);
+			throw new DaoException("Problème lors de l'exécution de la requête",e);
 		}
 		catch (Exception e) {
-			throw DaoException("Erreur de connection",e);
+			throw new DaoException("Erreur de connection",e);
 		}
 		finally {
 			try {
@@ -323,10 +329,10 @@ public class MembreDaoImpl implements MembreDao{
 				}
 			}
 			catch (Exception e) {
-				throw DaoException("La connection n'a pas pu être refermée...",e);
+				throw new DaoException("La connection n'a pas pu être refermée...",e);
 			}
 		}
 		
-		return count;
+		return counter;
 	}
 }
