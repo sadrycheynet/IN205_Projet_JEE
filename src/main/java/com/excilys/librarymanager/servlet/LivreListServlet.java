@@ -24,7 +24,7 @@ public class LivreListServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LivreService livreService = LivreServiceImpl.getInstance();
+		LivreServiceImpl livreService = LivreServiceImpl.getInstance();
 		
 		List<Livre> livres = new ArrayList<Livre>();
 		try{

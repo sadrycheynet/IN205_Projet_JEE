@@ -35,8 +35,8 @@ public class MembreDetailsServlet extends HttpServlet {
 		Membre membre;
 		List<Emprunt> listEmprunts = new ArrayList<Emprunt>();
 		
-		MembreService membreService = MembreServiceImpl.getInstance();
-		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
+		MembreServiceImpl membreService = MembreServiceImpl.getInstance();
+		EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
 		
 		try{
 			id = Integer.parseInt(inputId);
@@ -79,8 +79,8 @@ public class MembreDetailsServlet extends HttpServlet {
 		Membre membre = new Membre();
 		List<Emprunt> listEmprunts = new ArrayList<Emprunt>();
 		
-		MembreService membreService = MembreServiceImpl.getInstance();
-		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
+		MembreServiceImpl membreService = MembreServiceImpl.getInstance();
+		EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
 		try {
 			id = Integer.parseInt(inputId);
 			//Vérification du type de l'abonnement

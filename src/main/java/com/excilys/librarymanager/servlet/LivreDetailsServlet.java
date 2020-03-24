@@ -34,8 +34,8 @@ public class LivreDetailsServlet extends HttpServlet {
 		Livre livre;
 		List<Emprunt> listEmprunts = new ArrayList<Emprunt>();
 		
-		LivreService livreService = LivreServiceImpl.getInstance();
-		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
+		LivreServiceImpl livreService = LivreServiceImpl.getInstance();
+		EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
 		
 		try{
 			id = Integer.parseInt(inputId);
@@ -74,8 +74,8 @@ public class LivreDetailsServlet extends HttpServlet {
 		Livre livre;
 		List<Emprunt> listEmprunts = new ArrayList<Emprunt>();
 		
-		LivreService livreService = LivreServiceImpl.getInstance();
-		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
+		LivreServiceImpl livreService = LivreServiceImpl.getInstance();
+		EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
 		try {
 			id = Integer.parseInt(inputId);
 						

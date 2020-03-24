@@ -42,7 +42,7 @@ public class MembreServiceImpl implements MembreService{
 	 */
 	@Override
 	public Membre getById(int id) throws ServiceException{
-		MembreDao membreDao = MembreDaoImpl.getInstance();
+		MembreDaoImpl membreDao = MembreDaoImpl.getInstance();
 		Membre membre = new Membre();
 		try {
 			membre = membreDao.getById(id);
@@ -57,7 +57,7 @@ public class MembreServiceImpl implements MembreService{
 	 */
 	@Override
 	public List<Membre> getList() throws ServiceException{
-		MembreDao membreDao = MembreDaoImpl.getInstance();
+		MembreDaoImpl membreDao = MembreDaoImpl.getInstance();
 		List<Membre> membres = new ArrayList<Membre>();
 		try{
 			membres = membreDao.getList();
@@ -73,7 +73,7 @@ public class MembreServiceImpl implements MembreService{
 	 */
 	@Override
 	public List<Membre> getListMembreEmpruntPossible() throws ServiceException{
-		MembreDao membreDao = MembreDaoImpl.getInstance();
+		MembreDaoImpl membreDao = MembreDaoImpl.getInstance();
 		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
 		
 		List<Membre> membres = new ArrayList<Membre>();
@@ -114,7 +114,7 @@ public class MembreServiceImpl implements MembreService{
 			throw new ServiceException("Les membres de peuvent pas avoir de prénom ou de nom vide !");
 		}
 		else{
-			MembreDao membreDao = MembreDaoImpl.getInstance();
+			MembreDaoImpl membreDao = MembreDaoImpl.getInstance();
 			try{
 				//On passe le nom du membre en majuscules
 				id = membreDao.create(nom.toUpperCase(), prenom, adresse, email, telephone);
@@ -133,7 +133,7 @@ public class MembreServiceImpl implements MembreService{
 	 */
 	@Override
 	public void update(Membre membre) throws ServiceException{
-		MembreDao membreDao = MembreDaoImpl.getInstance();
+		MembreDaoImpl membreDao = MembreDaoImpl.getInstance();
 		String nom = membre.getNom();
 		if(nom.isEmpty()||(membre.getPrenom()).isEmpty()){
 			/*Notons qu'on n'a pas précisé dans les specs si le prénom et le nom du membre devait contenir uniquement des caractères alphanumériques,
@@ -156,7 +156,7 @@ public class MembreServiceImpl implements MembreService{
 	 */
 	@Override
 	public void delete(int id) throws ServiceException{
-		MembreDao membreDao = MembreDaoImpl.getInstance();
+		MembreDaoImpl membreDao = MembreDaoImpl.getInstance();
 		try{
 			membreDao.delete(id);
 		} catch(DaoException e){
@@ -170,7 +170,7 @@ public class MembreServiceImpl implements MembreService{
 	 */
 	@Override
 	public int count() throws ServiceException{
-		MembreDao membreDao = MembreDaoImpl.getInstance();
+		MembreDaoImpl membreDao = MembreDaoImpl.getInstance();
 		int counter = -1;
 		try{
 			counter = membreDao.count();

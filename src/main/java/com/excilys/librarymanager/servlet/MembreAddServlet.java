@@ -31,7 +31,7 @@ public class MembreAddServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MembreService membreService = MembreServiceImpl.getInstance();
+		MembreServiceImpl membreService = MembreServiceImpl.getInstance();
 		String inputNom = request.getParameter("nom");
 		String inputPrenom = request.getParameter("prenom");
 		String inputAdresse = request.getParameter("adresse");

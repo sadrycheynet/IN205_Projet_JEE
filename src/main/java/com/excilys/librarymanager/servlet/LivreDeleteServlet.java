@@ -22,7 +22,7 @@ public class LivreDeleteServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LivreService livreService = LivreServiceImpl.getInstance();
+		LivreServiceImpl livreService = LivreServiceImpl.getInstance();
 		
 		String inputId = request.getParameter("id");
 		int id = -1;
@@ -55,7 +55,7 @@ public class LivreDeleteServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LivreService livreService = LivreServiceImpl.getInstance();
+		LivreServiceImpl livreService = LivreServiceImpl.getInstance();
 		
 		String inputId = request.getParameter("id");
 		int id = -1;

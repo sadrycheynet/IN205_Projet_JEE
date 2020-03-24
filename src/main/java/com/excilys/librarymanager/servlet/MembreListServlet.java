@@ -24,7 +24,7 @@ public class MembreListServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MembreService membreService = MembreServiceImpl.getInstance();
+		MembreServiceImpl membreService = MembreServiceImpl.getInstance();
 		
 		List<Membre> membres = new ArrayList<Membre>();
 		try{

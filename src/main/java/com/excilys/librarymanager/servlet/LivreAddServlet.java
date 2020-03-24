@@ -31,7 +31,7 @@ public class LivreAddServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LivreService livreService = LivreServiceImpl.getInstance();
+		LivreServiceImpl livreService = LivreServiceImpl.getInstance();
 		String inputTitre = request.getParameter("titre");
 		String inputAuteur = request.getParameter("auteur");
 		String inputIsbn = request.getParameter("isbn");

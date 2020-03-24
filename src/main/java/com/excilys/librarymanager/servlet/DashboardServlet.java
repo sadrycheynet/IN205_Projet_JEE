@@ -27,9 +27,9 @@ public class DashboardServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MembreService membreService = MembreServiceImpl.getInstance();
-		LivreService livreService = LivreServiceImpl.getInstance();
-		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
+		MembreServiceImpl membreService = MembreServiceImpl.getInstance();
+		LivreServiceImpl livreService = LivreServiceImpl.getInstance();
+		EmpruntServiceImpl empruntService = EmpruntServiceImpl.getInstance();
 		
 		int nbMembres = -1;
 		int nbLivres = -1;
